@@ -1,7 +1,7 @@
 
 2018.05.19
-+ detects headers with ---- (level=2) and === (level=1) lines after header
-+ strips # from header ends
++ add: detects headers with ---- (level=2) and === (level=1) lines after header
++ add: strips # from header ends
 
 2018.05.17
 * updated for last CudaTree
