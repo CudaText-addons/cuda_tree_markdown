@@ -1,4 +1,7 @@
 
+2018.05.19
++ detects headers with ---- (level=2) and === (level=1) lines after header
+
 2018.05.17
 * updated for last CudaTree
 

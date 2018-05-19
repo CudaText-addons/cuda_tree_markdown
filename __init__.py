@@ -19,6 +19,15 @@ def is_line_head(s):
     return _is_pre(s, '#', True)
 
 
+def is_line_after_head(s, char):
+    if not s:
+        return False
+    for ch in s:
+        if ch != char:
+            return False
+    return True
+
+
 def get_headers(filename, lines):
     '''
     Generates markdown headers in format:
@@ -40,6 +49,16 @@ def get_headers(filename, lines):
             continue
         if tick:
             continue
+
         r = is_line_head(s)
         if r:
-            yield i, r, s[r:].strip()
+            yield i, r, s.strip(' #')
+        else:
+            if i+1 < len(lines) and \
+                not s.startswith('-') and \
+                not s.startswith('='):
+                s2 = lines[i+1]
+                if is_line_after_head(s2, '='):
+                    yield i, 1, s
+                elif is_line_after_head(s2, '-'):
+                    yield i, 2, s
