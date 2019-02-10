@@ -33,6 +33,7 @@ def get_headers(filename, lines):
     Generates markdown headers in format:
     line_index, header_level, header_text
     '''
+    res = []
     tick = False
     tick_r = 0
     for i, s in enumerate(lines):
@@ -52,13 +53,15 @@ def get_headers(filename, lines):
 
         r = is_line_head(s)
         if r:
-            yield i, r, s.strip(' #')
+            res.append( ((0, i, 0, i+1), r, s.strip(' #'), -1) )
         else:
             if i+1 < len(lines) and \
                 not s.startswith('-') and \
                 not s.startswith('='):
                 s2 = lines[i+1]
                 if is_line_after_head(s2, '='):
-                    yield i, 1, s
+                    res.append( ((0, i, 0, i+1), 1, s, -1) )
                 elif is_line_after_head(s2, '-'):
-                    yield i, 2, s
+                    res.append( ((0, i, 0, i+1), 2, s, -1) )
+
+    return res
