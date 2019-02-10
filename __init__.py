@@ -30,8 +30,8 @@ def is_line_after_head(s, char):
 
 def get_headers(filename, lines):
     '''
-    Generates markdown headers in format:
-    line_index, header_level, header_text
+    Gets list of nodes in format:
+    ((x1, y1, x2, y2), level, title, icon)
     '''
     res = []
     tick = False
