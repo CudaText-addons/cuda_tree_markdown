@@ -1,4 +1,4 @@
 TreeHelper for Markdown lexer.
 
-Author: Alexey (CudaText)
+Author: Alexey Torgashin (CudaText)
 License: MIT
